@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', path='css/interfaz-administrador.css') }}">
+    </head>
+    <body>
+        <section>
+            <div id="menu-lateral">
+                <p id="titulo-menu">
+                    Festival Manager
+                </p>
+                <hr style="margin: 20px; color: #F5F6FA">
+                <div id="elementos-menu">
+                    <div class="elemento" id="seleccionado">
+                        <p>📈 Dashboard</p>
+                    </div>
+                    <div class="elemento">
+                        <p>💰 Ventas</p>
+                    </div>
+                    <div class="elemento">
+                        <p>👥 Asistentes</p>
+                    </div>
+                    <div class="elemento">
+                        <p>🎤 Artistas</p>
+                    </div>
+                    <div class="elemento">
+                        <p>⚙️ Configuración</p>
+                    </div>
+                </div>
+            </div>
+            <div id="panel-resumen">
+                <div id="titulo-general">
+                    <p id="titulo-dashboard">Dashboard General</p>
+                    <p id="descripcion-general">Bienvenido de nuevo Carlos - Resumen de tus festivales y eventos</p>
+                </div>
+                <div id="resumen-secciones">
+                    <div class="seccion">
+                        <div id="color-lateral-1"></div>
+                        <div class="contenido-seccion">
+                            <div class="imagen-seccion"><p>💰</p></div>
+                            <p class="cantidad">2.847</p>
+                            <p class="subtitulo">Entradas vendidas</p>
+                            <p class="variacion">↑ 12.5 mas vs mes anterior</p>
+                        </div>
+                    </div>
+                    <div class="seccion">
+                        <div id="color-lateral-2"></div>
+                        <div class="contenido-seccion">
+                            <div class="imagen-seccion"><p>💰</p></div>
+                            <p class="cantidad">2.847</p>
+                            <p class="subtitulo">Entradas vendidas</p>
+                            <p class="variacion">↑ 12.5 mas vs mes anterior</p>
+                        </div>
+                    </div>
+                    <div class="seccion">
+                        <div id="color-lateral-3"></div>
+                        <div class="contenido-seccion">
+                            <div class="imagen-seccion"><p>💰</p></div>
+                            <p class="cantidad">2.847</p>
+                            <p class="subtitulo">Entradas vendidas</p>
+                            <p class="variacion">↑ 12.5 mas vs mes anterior</p>
+                        </div>
+                    </div>
+                    <div class="seccion">
+                        <div id="color-lateral-4"></div>
+                        <div class="contenido-seccion">
+                            <div class="imagen-seccion"><p>💰</p></div>
+                            <p class="cantidad">2.847</p>
+                            <p class="subtitulo">Entradas vendidas</p>
+                            <p class="variacion">↑ 12.5 mas vs mes anterior</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                        <div class="bar-chart" id="diagrama"></div>
+                    </div>
+                <div id="resumen-central">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>Cliente</th>
+                                <th>Evento</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        {% for pedido in data.pedidos %}
+                        <tr>
+                            <td>{{ pedido.id }}</td>
+                            <td>{{ pedido.cliente }}</td>
+                            <td>{{ pedido.evento }}</td>
+                            <td>{{ pedido.numEntradas }}</td>
+                            <td>{{ pedido.total }}</td>
+                            <td>{{ pedido.estado }}</td>
+                            <td>{{ pedido.fecha }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </section>
+        <script src="{{ url_for('static', path='js/main.js') }}"></script>
+    </body>
+</html>

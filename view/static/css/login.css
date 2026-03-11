@@ -1,0 +1,79 @@
+html{
+    background-color: black;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#login_space{
+    height: 600px;
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login_space > form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 100px;
+    align-items: center;
+
+}
+input{
+    border-radius: 15px;
+    width: 300px;
+    height: 40px;
+    padding-left: 10px;
+    border: 1px solid #dadada;
+}
+
+input:focus{
+    outline: none;
+}
+
+#logo_space{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+#envio{
+    width: 150px;
+    height: 50px;
+    margin-top: 100px;
+    background-image: linear-gradient(to right, #0F1330, #823361);
+    border: none;
+    color: white;
+}
+
+#envio-google{
+    width: 310px;
+    height: 45px;
+    background-color: white;
+    border: 1px solid #dadada;
+    border-radius: 15px;
+    gap: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: #999797;
+}
+
+#envio-google > p{
+    font-size: 14px;
+}

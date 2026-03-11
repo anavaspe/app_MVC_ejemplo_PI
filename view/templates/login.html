@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', path='css/login.css') }}">
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    </head>
+
+    <body>
+        <div id="login_space">
+            <div id="logo_space">
+                <img src="{{ url_for('static', path='images/logo.png') }}" width="100px">
+            </div>
+            <form>
+                <input type="text" id="email" placeholder="Usuario">
+                <input type="password" id="password" placeholder="Contraseña">
+                <button type="button" id="envio-google" value="Iniciar sesión con Google"><img src="{{ url_for('static', path='images/google-logo.png') }}" width="40px"><p>Sign in with Google</p></button>
+                <input type="submit" id="envio" value="Aceptar">
+            </form>
+        </div>
+
+        <script>
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyBCcn0mU4PirmxlVdjZsJ5h94n3fBfH9oY",
+              authDomain: "backendpi-4559c.firebaseapp.com",
+              projectId: "backendpi-4559c",
+              storageBucket: "backendpi-4559c.firebasestorage.app",
+              messagingSenderId: "1066212849838",
+              appId: "1:1066212849838:web:6f539cd2b47b8ff4d3153f"
+            };
+
+            firebase.initializeApp(firebaseConfig);
+
+            submit = document.getElementById("envio");
+            submit.addEventListener("click", (event) => {
+                event.preventDefault();
+            
+                email = document.getElementById("email").value;
+                password = document.getElementById("password").value;
+                
+                const auth = firebase.auth();
+                auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    console.log("Usuario logeado exitosamente");
+                    user = userCredential.user.getIdToken().then((token) => {
+                        return fetch("http://localhost:8000/login-password", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({token: token}),
+                        redirect: 'follow'
+                    })
+                    })
+                    .then(response => {
+                        console.log("Respuesta del servidor:", response);
+                        if (response.ok) {
+                            window.location.href = "http://localhost:8000/administrador_view";
+                        }
+                    })})  
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error(errorCode, errorMessage);
+                });
+            });
+
+            google = document.getElementById("envio-google");
+            google.addEventListener("click", (event) => {
+                event.preventDefault();
+                
+                const auth = firebase.auth();
+                const provider = new firebase.auth.GoogleAuthProvider();
+                auth.signInWithPopup(provider)
+                .then((result) => {
+                    // Signed in
+                    console.log("Usuario logeado exitosamente con Google", result.credential, result.credential.accessToken);
+                    console.log(result.additionalUserInfo.profile.name);
+                    window.location.href = "interfaz-administrador.html";
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error(errorCode, errorMessage);
+                });
+            });
+        </script>
+    </body>
+</html>

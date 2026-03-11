@@ -1,0 +1,5 @@
+model/dao/firebase/credentials.json
+__pycache__/
+controller/__pycache__/
+model/dao/firebase/__pycache__/
+views/__pycache__/

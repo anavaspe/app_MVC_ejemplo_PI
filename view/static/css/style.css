@@ -1,0 +1,234 @@
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-image: url(../images/festival.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+#menu{
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 50px;
+    opacity: 3.5;
+    align-items: center;
+
+    margin: 20px;
+
+    position: sticky;
+    top: 0;
+}
+
+#menu > p, a{
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    margin-left: 50px;
+}
+
+#botones_menu{
+    margin-right: 50px;
+}
+
+#primera_seccion{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to top, #000000, #cfb74000);
+}
+
+#primera_seccion > h1{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-top: 10%;
+    color: rgb(255, 255, 255);
+    font-size: 100px;
+}
+
+#segunda_seccion{
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    overflow: hidden;
+}
+
+#cabcilla{
+    position: relative;
+    padding-top: 50px;
+    justify-content: center;
+    display: flex;   
+}
+
+#cabcilla > h1{
+    color: rgb(207, 205, 205);
+    font-size: 100px;
+}
+
+.tarjeta{
+    width: 500px;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10%;
+}
+
+#descripcion_entrada > p{
+    color: white;
+    font-size: 30px;
+    margin-left: 20%;
+    margin-right: 350px;
+}
+
+.tarjeta > img{
+    margin-left: 350px;
+    margin-bottom: 200px;
+}
+
+#descripcion_entrada{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin-top: -300px;
+}
+
+#boton{
+    width: 200px;
+    height: 70px;
+    background-image: linear-gradient(to right, #0F1330, #823361);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 200px;
+}
+
+#boton:hover{
+    background-image: linear-gradient(to right, #0F1330, #0F1330);
+}
+
+#boton > p{
+    color: white;
+    font-size: 18px;
+}
+
+#cuenta_atras{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.grupo_cuenta{
+    font-weight: 600;
+}
+
+.grupo_cuenta > p{
+    color: white;
+    margin-bottom: 1px;
+}
+
+.grande{
+    font-size: 70px;
+}
+
+/* Estilo responsive */
+@media (max-width: 768px) {
+    #menu {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 20px;
+    }
+
+    #menu > p, a {
+        font-size: 16px;
+        padding: 10px;
+        margin-left: 0;
+    }
+
+    #botones_menu {
+        margin-right: 0;
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #primera_seccion > h1 {
+        font-size: 48px;
+        text-align: center;
+        margin-top: 5%;
+    }
+
+    #cuenta_atras {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .grande {
+        font-size: 45px;
+    }
+
+    .tarjeta {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        margin-top: 5%;
+    }
+
+    .tarjeta > img {
+        margin-left: 0;
+        margin-bottom: 0;
+        max-width: 90%;
+        height: auto;
+        order: 1;
+    }
+
+    #descripcion_entrada {
+        order: 2;
+        margin-top: 20px;
+        width: 100%;
+        align-items: center;
+    }
+
+    #descripcion_entrada > p {
+        font-size: 18px;
+        margin: 0 20px;
+        text-align: center;
+    }
+
+    #boton {
+        margin: 20px auto;
+        margin-right: auto;
+    }
+
+    #segunda_seccion {
+        height: auto;
+        overflow: visible;
+        padding-bottom: 60px;
+    }
+
+    #cabcilla > h1 {
+        font-size: 50px;
+        text-align: center;
+    }
+}

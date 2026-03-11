@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UEx Festival</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+</head>
+<body>
+    <section id="primera_seccion">
+    <div id="menu">
+        <img src="{{ url_for('static', path='images/logo.png') }}" width="90px">
+        <div id="botones_menu">
+            <a href="#segunda_seccion">Entradas</a>
+            <a href="https://madcoolfestival.es">Mad Cool</a>
+            <a href="http://localhost:8000/login">LogIn</a>
+        </div>
+    </div>
+    <h1>Between heaven <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and hell</h1>
+    <div id="cuenta_atras">
+        <div class="grupo_cuenta">
+            <p class="grande" id="dias">00</p>
+            <p class="chico">días</p>
+        </div>
+        <div class="grupo_cuenta">
+            <p class="grande" id="horas">00</p>
+            <p class="chico">horas</p>
+        </div>
+        <div class="grupo_cuenta">
+            <p class="grande" id="minutos">00</p>
+            <p class="chico">minutos</p>
+        </div>
+        <div class="grupo_cuenta">
+            <p class="grande" id="segundos">00</p>
+            <p class="chico">segundos</p>
+        </div>
+    </div>
+    </section>
+    <section id="segunda_seccion">
+        <div id="cabcilla">
+            <h1>Compra tus entradas</h1>
+        </div>
+        <div>
+            <div class="tarjeta">
+                <img src="{{ url_for('static', path='images/image.png') }}" height="600px">
+                <div id="descripcion_entrada">
+                    <p>Magna proident dolor id proident dolor dolor. Incididunt laboris magna minim qui incididunt sunt ex anim anim tempor in adipisicing do irure. Proident eiusmod sint amet eiusmod eu incididunt. Enim ut dolor do sint.</p>
+                    <div id="boton"><p><b>Compra aquí</b></p></div>
+                </div>    
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', path='js/main.js') }}"></script>
+</body>   
+</html>
