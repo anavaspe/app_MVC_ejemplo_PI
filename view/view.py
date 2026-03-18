@@ -19,3 +19,6 @@ class View ():
 
     def get_administrador_view(self, request: Request, data: dict):
         return templates.TemplateResponse("interfaz-administrador.html", {"request": request, "data": data})
+    
+    def get_client_view(self, request: Request):
+        return templates.TemplateResponse("interfaz_cliente.html", {"request": request})

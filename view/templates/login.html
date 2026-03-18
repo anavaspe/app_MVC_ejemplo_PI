@@ -63,7 +63,18 @@
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    console.error(errorCode, errorMessage);
+                    console.log("Error al iniciar sesión:", errorCode);
+
+                    if (errorCode === 'auth/internal-error'){
+                        return fetch("http://localhost:8000/signup", {
+                        method: "GET"
+                        }).then(response => {
+                            console.log("Redirigiendo a la página de registro...");
+                            if (response.ok) {
+                                window.location.href = "http://localhost:8000/signup";
+                            }
+                        });
+                    }
                 });
             });
 

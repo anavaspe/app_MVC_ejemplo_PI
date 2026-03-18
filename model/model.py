@@ -19,4 +19,4 @@ class Model ():
         usuarioDAO = self.factory.getUsuarioDAO(uid)
         return usuarioDAO.get_usuario(uid)
     
-# Cuando se instancie el modelo, se le pasará la factory de firebase, y el modelo se encargará de obtener los DAO necesarios para su funcionamiento.
+#Cuando se instancie el modelo, se le pasará la factory de firebase, y el modelo se encargará de obtener los DAO necesarios para su funcionamiento.

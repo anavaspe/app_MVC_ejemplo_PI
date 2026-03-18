@@ -1,0 +1,216 @@
+html{
+    padding: 0;
+    margin: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #e7eaf0;
+}
+
+a{
+    text-decoration: none;
+}
+
+#menu{
+    width: calc(100% - 20px);
+    border-width: 2px;
+    
+    height: 100px;
+    border-radius: 20px;
+    margin: 10px;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#accesos{
+    padding: 50px;
+}
+
+#accesos > a{
+    margin-left: 20px;
+}
+
+section{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#panel-proximos-eventos{
+    height: 600px;
+    width: 100%;
+    margin-top: 100px;
+    border-radius: 20px;
+    padding: 40px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.tarjeta{
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+}
+
+.titulo{
+    font-weight: 600px;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.tarjeta > img{
+    margin-top: -80px;
+}
+
+.descripcion{
+    z-index: 100;
+    margin-top: -150px;
+}
+
+h1{
+    font-size: 60px;
+    margin-top: 100px;
+    color: #1b2257;
+}
+
+#detalle{
+    display: flex;
+    width: 100%;
+    margin-top: -100px;
+    padding-left: 100px;
+}
+
+#detalle > p{
+    width: 50%;
+    margin-top: 5px;
+}
+
+#boton{
+    width: 140px;
+    height: 40px;
+    background-color: #1b2257;
+    border-radius: 30px;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 30px;
+}
+
+/* Estilo responsive */
+@media (max-width: 1024px) {
+    #panel-proximos-eventos {
+        grid-template-columns: 1fr 1fr;
+        height: auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .tarjeta {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .tarjeta > img {
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+
+    #detalle {
+        padding-left: 10px;
+        margin-top: 0;
+    }
+
+    #detalle > p {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #menu {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    #accesos {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    section {
+        height: auto;
+    }
+
+    #panel-proximos-eventos {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .tarjeta {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .tarjeta > img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        margin-top: 0;
+    }
+
+    .descripcion {
+        margin-top: 10px;
+    }
+
+    #detalle {
+        flex-direction: column;
+        padding-left: 10px;
+        margin-top: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #detalle > p {
+        width: 100%;
+    }
+
+    #boton {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
