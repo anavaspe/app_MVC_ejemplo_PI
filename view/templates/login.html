@@ -54,12 +54,15 @@
                         redirect: 'follow'
                     })
                     })
-                    .then(response => {
-                        console.log("Respuesta del servidor:", response);
-                        if (response.ok) {
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Respuesta del servidor:", data.role);
+                        if(data.role === "administrador"){
                             window.location.href = "http://localhost:8000/administrador_view";
+                        } else if (data.role === "cliente"){
+                            window.location.href = "http://localhost:8000/cliente_view";
                         }
-                    })})  
+                    })})
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;

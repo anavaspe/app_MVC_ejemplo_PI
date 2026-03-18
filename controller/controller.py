@@ -35,7 +35,12 @@ async def signup(request: Request):
 
 @app.get("/cliente_view")
 async def cliente_view(request: Request):
-    return myviewcomponent.get_client_view(request)
+    cookie = request.cookies.get("session")
+    user = sessions.get(cookie)
+    if user is None:
+        return RedirectResponse(url="/login", status_code=303)
+    else:
+        return myviewcomponent.get_client_view(request)
 
 @app.post("/login-password")
 async def login_password(data: dict = Body(...)):
@@ -58,12 +63,12 @@ async def login_password(data: dict = Body(...)):
         print(f"Guardando en sesión: {user_json}")
         sessions[uid] = user.get_sesion()  #Guardar solo los datos necesarios para la sesión
 
-        if user.get_role() == "administrador":
-            redirect = RedirectResponse(url="/administrador_view", status_code=303)
-            redirect.set_cookie(key="session", value=uid, httponly=True)
-        else:
-            RedirectResponse(url="/", status_code=303)
-        return redirect
+        print(f"Sesión creada para UID: {uid} con role: {user.get_role()}")
+
+        response = Response(content=json.dumps({"role": user.get_role()}), media_type="application/json")
+        response.set_cookie(key="session", value=uid, httponly=True)
+
+        return response
 
 @app.get("/administrador_view")
 async def administrador_view(request: Request):
@@ -72,13 +77,18 @@ async def administrador_view(request: Request):
     cookie = request.cookies.get("session")
     print(cookie)
     user = sessions.get(cookie)
+
+    print(f"Intento de acceso al panel de administración de: {user.get('role')}")
+
     if user is None:
         return RedirectResponse(url="/login", status_code=303)
-    
-    pedidos = json.loads(mymodelcomponent.get_pedidos())
-    data = {
-        "pedidos": pedidos
-    }
-    return myviewcomponent.get_administrador_view(request, data)
+    elif user.get("role") != "administrador":
+        return RedirectResponse(url="/cliente_view", status_code=303)
+    else:
+        pedidos = json.loads(mymodelcomponent.get_pedidos())
+        data = {
+            "pedidos": pedidos
+        }
+        return myviewcomponent.get_administrador_view(request, data)
 
-app.mount("/", StaticFiles(directory="/home/navas/Escritorio/Venias/PI_2025_2026/EjemploFastAPI/view/static", html=True), name="static")
+app.mount("/static", StaticFiles(directory="/home/navas/Escritorio/Venias/PI_2025_2026/EjemploFastAPI/view/static", html=True), name="static")
